@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, Form, FormGroup, FormFeedback, Col, Input, Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { Label, Form, FormGroup, FormFeedback, Col, Input, Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { ageGroups, wherefromPlaces } from '../../Datalists';
@@ -7,7 +7,7 @@ import apiClient from '../../api';
 
 import './AddModal.scss';
 
-export default function AddModal({ toggle, addContactModal, setAddContactModal }) {
+export default function AddModal({ toggle, addContactModal, setAddContactModal, setSuccess }) {
 	
 	const {
 		register,
@@ -31,18 +31,18 @@ export default function AddModal({ toggle, addContactModal, setAddContactModal }
 	const newsletterField = register('newsletter');
 	
 	const addContact = async (values) => {
-
 		try {
 			const response = await apiClient.post('/contacts/create.php', values);
 			if (response.status === 200) {
 				setAddContactModal(false);
-				toast.success('Yeah baby, you added a new contact!')
+				toast('🌈 Yeah baby! You added a new contact!')
 			} else {
 				throw new Error(`Something went wrong. Response status: ${response.status}`);
 			}
 		} catch {
 			toast.error('Could not create a new contact')
 		}
+		setSuccess(true);
 	};
 	
 	
@@ -65,7 +65,7 @@ export default function AddModal({ toggle, addContactModal, setAddContactModal }
 							</Label>
 							<Col>
 								<Input
-									autocomplete='on'
+									autoComplete='on'
 									type='text'
 									id='nameField'
 									name='name'
@@ -107,7 +107,7 @@ export default function AddModal({ toggle, addContactModal, setAddContactModal }
 							</Label>
 							<Col>
 								<Input
-									autocomplete='on'
+									autoComplete='on'
 									type='email'
 									id='emailField'
 									name='email'
@@ -125,7 +125,7 @@ export default function AddModal({ toggle, addContactModal, setAddContactModal }
 							</Label>
 							<Col>
 								<Input
-									autocomplete='on'
+									autoComplete='on'
 									type='text'
 									id='phoneField'
 									name='phone'

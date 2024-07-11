@@ -110,7 +110,6 @@ export default function AddModal({ toggle, addContactModal, setAddContactModal, 
 								type='email'
 								id='emailField'
 								name='email'
-								invalid={!!errors.email}
 								innerRef={emailField.ref}
 								onBlur={emailField.onBlur}
 								onChange={emailField.onChange}

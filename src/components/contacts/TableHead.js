@@ -5,13 +5,13 @@ export default function TableHead() {
 		<thead className='small'>
 			<tr className='table-hr'>
 				<th scope='col'>Name</th>
-				<th scope='col' className='col-wherefrom'>Where from?</th>
-				<th scope='col' className='col-email'>Email</th>
+				<th scope='col' className='th-col'>Where from?</th>
+				<th scope='col' className='th-col'>Email</th>
 				<th scope='col'>Phone</th>
-				<th scope='col' className='col-newsletter'>Newsletter</th>
-				<th scope='col' className='col-age'>Age</th>
-				<th scope='col' className='col-updated'>Updated</th>
-				<th scope='col' className='col-edit d-flex justify-content-center'>Edit / Delete</th>
+				<th scope='col' className='th-col'>Newsletter</th>
+				<th scope='col' className='th-col'>Age</th>
+				<th scope='col' className='th-col'>Updated</th>
+				<th scope='col' className='th-col d-flex justify-content-center'>Edit / Delete</th>
 			</tr>
 		</thead>
 	);

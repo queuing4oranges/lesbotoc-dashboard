@@ -62,7 +62,7 @@ export default function EditModal({ contact, ...props }) {
 			<ModalBody>
 				<Form
 					onSubmit={handleSubmit(editContact)}
-					className=' contact-form p-3'
+					className='p-3'
 				>
 					<FormGroup className='mt-3'>
 						<Label htmlFor='nameField'>Name</Label>

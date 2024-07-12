@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Moment from 'react-moment';
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import { CSVLink } from 'react-csv';
 import { Container, Row, Button, Col, Table } from 'reactstrap';
 
 import apiClient from '../../api';
+import { AdminContext } from '../../AdminContextProvider';
 import AddModal from './AddModal';
 import EditModal from './EditModal';
 import Searchbar from './Searchbar';
@@ -15,14 +16,17 @@ import TableHead from './TableHead';
 // import ReportBug from '../../includes/ReportBug';
 
 export default function ContactsContainer() {
-	const [selectedContact, setSelectedContact] = useState(false);
-	const [contacts, setContacts] = useState([]);
 	const [addContactModal, setAddContactModal] = useState(false);
 	const [editContactModal, setEditContactModal] = useState(false);
-	const [success, setSuccess] = useState(false);
-	
+
 	const toggleAddContactModal = () => setAddContactModal(!addContactModal);
 	const toggleEditContactModal = () => setEditContactModal(!editContactModal);
+	
+	const {
+		contacts, setContacts,
+		success, setSuccess,
+		selectedContact,setSelectedContact
+	} = useContext(AdminContext);
 
 	// Get contacts on first render
 	useEffect(() => {
@@ -84,11 +88,7 @@ export default function ContactsContainer() {
 			</Row>
 			
 			<Row>
-				<Searchbar
-					contacts={contacts}
-					// TODO toggle Edit contact modal
-					// editContactModal={editContactModal}
-				/>
+				<Searchbar setEditContactModal={setEditContactModal} />
 			</Row>
 
 			<Row className='mx-5 mb-3'>
@@ -133,8 +133,11 @@ export default function ContactsContainer() {
 									<td className='td td-updated'>
 										{!contact.updated_at ? '' : <Moment format='D. MMMM YYYY'>{contact.updated_at}</Moment>}
 									</td>
-									<td className='td td-crud d-flex justify-content-between p-2'>
+									<td className='td td-crud d-flex justify-content-center p-2'>
 										<Button
+											outline
+											title='Edit contact'
+											className='me-2'
 											type='button'
 											color='info'
 											onClick={() => {
@@ -142,9 +145,12 @@ export default function ContactsContainer() {
 												setSelectedContact(contact);
 											}}
 										>
-											<i className='bi bi-pencil-square' />
+											<i className='bi bi-pencil' />
 										</Button>
 										<Button
+											outline
+											title='Delete contact'
+											className='ms-2'
 											type='button'
 											color='danger'
 											onClick={() => deleteContact(contact.id)}
@@ -164,7 +170,6 @@ export default function ContactsContainer() {
 					toggle={toggleAddContactModal}
 					addContactModal={addContactModal}
 					setAddContactModal={setAddContactModal}
-					setSuccess={setSuccess}
 				/>
 			}
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
@@ -10,8 +10,10 @@ import {
 
 import { ageGroups, wherefromPlaces } from '../../Datalists';
 import apiClient from '../../api';
+import { AdminContext } from '../../AdminContextProvider';
 
-export default function AddModal({ toggle, addContactModal, setAddContactModal, setSuccess }) {
+export default function AddModal({ toggle, addContactModal, setAddContactModal }) {
+	const { setSuccess } = useContext(AdminContext);
 
 	const {
 		register,
@@ -61,7 +63,7 @@ export default function AddModal({ toggle, addContactModal, setAddContactModal, 
 			<ModalBody>
 				<Form
 					onSubmit={handleSubmit(addContact)}
-					className=' contact-form p-3'
+					className='p-3'
 					method='post'
 				>
 					<FormGroup className='mt-3'>

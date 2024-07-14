@@ -1,0 +1,8 @@
+{
+	"javascript.format.enable": true,
+	"css.format.enable": false,
+	"scss.format.enable": false,
+	"html.format.enable": true,
+	"less.format.enable": false,
+	"sass.format.enabled": false
+}

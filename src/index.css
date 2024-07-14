@@ -1,0 +1,19 @@
+*,
+::after,
+::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.App {
+	font-family: 'Roboto', sans-serif, Arial, Helvetica, sans-serif;
+	height: 100vh;
+	overflow-x: hidden;
+}
+
+body {
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

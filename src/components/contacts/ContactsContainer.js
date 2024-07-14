@@ -83,15 +83,15 @@ export default function ContactsContainer() {
 		<Container fluid className='w-100 p-0 m-0'>
 		{/* <AdminNavbar className='w-100' /> */}
 		{/* <ReportBug/> */}
-			<Row>
-				<h3 className='mx-5 my-3'>Contacts</h3>
+			<Row className='px-2'>
+				<h3 className='px-5 my-3'>Contacts</h3>
 			</Row>
 			
 			<Row>
 				<Searchbar setEditContactModal={setEditContactModal} />
 			</Row>
 
-			<Row className='mx-5 mb-3'>
+			<Row className='px-5 mb-3'>
 				<Col>
 					<Button
 						color='success'
@@ -110,7 +110,7 @@ export default function ContactsContainer() {
 				</Col>
 			</Row>
 
-			<Row className='mx-5'>
+			<Row className='px-5'>
 				<Table
 					bordered
 					hover

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 
@@ -8,12 +8,13 @@ import {
 	Modal, ModalHeader, ModalBody
 } from 'reactstrap';
 
+import { AdminContext } from '../../AdminContextProvider';
 import apiClient from '../../api';
 import { wherefromPlaces, ageGroups } from '../../Datalists';
 
 export default function EditModal({ contact, ...props }) {
 	const { id, name, wherefrom, email, phone, newsletter, age, updated_at} = contact;
-
+	const { setSuccess } = useContext(AdminContext);
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		defaultValues: {
 			id, name, wherefrom, email, phone, age, updated_at, newsletter: Boolean(newsletter)
@@ -50,7 +51,7 @@ export default function EditModal({ contact, ...props }) {
 		} catch {
 			toast.error('Could not edit the contact.');
 		}
-		props.setSuccess(true);
+		setSuccess(true);
 	};
 	
 	return (

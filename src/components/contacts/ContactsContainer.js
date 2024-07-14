@@ -175,8 +175,8 @@ export default function ContactsContainer() {
 
 			{editContactModal &&
 				<EditModal
-					editContactModal={editContactModal}
 					toggle={toggleEditContactModal}
+					editContactModal={editContactModal}
 					setEditContactModal={setEditContactModal}
 					setSuccess={setSuccess}
 					contact={selectedContact}

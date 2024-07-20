@@ -39,7 +39,6 @@ export default function Searchbar({ setEditContactModal }) {
 	
 	const handleClickOutside = (e) => {
 		if(searchBarRef.current && !searchBarRef.current.contains(e.target)) {
-			console.log('clicked outside or no?')
 			clearInput();
 		}
 	}

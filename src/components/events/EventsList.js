@@ -18,7 +18,7 @@ export default function EventsList({ deleteEvent, ...props }) {
 				</Link>
 			</CardHeader>
 			
-			<CardBody className='p-1 h-100'>
+			<CardBody className='p-1 h-100 overflow-y-auto'>
 			{events &&
 				events.map((event, idx) => (
 					<div key={idx} className='p-2 my-1 single-event d-flex justify-content-between'>

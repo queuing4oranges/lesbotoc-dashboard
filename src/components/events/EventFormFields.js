@@ -401,14 +401,14 @@ export const SignupField = ({ register }) => {
 		<FormGroup check inline>
 			<Col>
 				<Input
-					id='newsletterField'
-					name='newsletter'
+					id='signupField'
+					name='signup'
 					type='checkbox'
 					innerRef={signupField.ref}
 					onBlur={signupField.onBlur}
 					onChange={signupField.onChange}
 				/>
-				<Label check htmlFor='newsletterField'>This event needs a signup form</Label>
+				<Label check htmlFor='signupField'>This event needs a signup form</Label>
 			</Col>
 		</FormGroup>
 	);

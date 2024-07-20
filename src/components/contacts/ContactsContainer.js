@@ -121,19 +121,19 @@ export default function ContactsContainer() {
 					<tbody>
 						{contacts &&
 							contacts.map((contact) => (
-								<tr className='table-row' key={contact.id}>
-									<td className='td td-name'>{contact.name}</td>
-									<td className='td td-wherefrom'>{contact.wherefrom}</td>
-									<td className='td td-email'>{contact.email}</td>
-									<td className='td td-phone'>{contact.phone}</td>
-									<td className='td td-newsletter'>
+								<tr key={contact.id}>
+									<td>{contact.name}</td>
+									<td>{contact.wherefrom}</td>
+									<td>{contact.email}</td>
+									<td>{contact.phone}</td>
+									<td>
 										{(contact.newsletter === 0) ? 'no' : (contact.newsletter === 1) ? 'yes' : ''}
 									</td>
-									<td className='td td-age'>{contact.age}</td>
-									<td className='td td-updated'>
+									<td>{contact.age}</td>
+									<td>
 										{!contact.updated_at ? '' : <Moment format='D. MMMM YYYY'>{contact.updated_at}</Moment>}
 									</td>
-									<td className='td td-crud d-flex justify-content-center p-2'>
+									<td className='d-flex justify-content-center p-2'>
 										<Button
 											outline
 											title='Edit contact'
@@ -178,7 +178,6 @@ export default function ContactsContainer() {
 					toggle={toggleEditContactModal}
 					editContactModal={editContactModal}
 					setEditContactModal={setEditContactModal}
-					setSuccess={setSuccess}
 					contact={selectedContact}
 				/>
 			}

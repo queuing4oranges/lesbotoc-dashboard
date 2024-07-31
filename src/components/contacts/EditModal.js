@@ -13,11 +13,11 @@ import apiClient from '../../api';
 import { wherefromPlaces, ageGroups } from '../../Datalists';
 
 export default function EditModal({ contact, ...props }) {
-	const { id, name, wherefrom, email, phone, newsletter, age, updated_at} = contact;
+	const { newsletter, id } = contact;
 	const { setSuccess } = useContext(AdminContext);
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		defaultValues: {
-			id, name, wherefrom, email, phone, age, updated_at, newsletter: Boolean(newsletter)
+			...contact, newsletter: Boolean(newsletter)
 		}
 	});
 

@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { toast } from 'react-toastify';
 import { CSVLink } from 'react-csv';
 
-import { Container, Row, Button, Col, Table } from 'reactstrap';
+import { Container, Row, Button, ButtonGroup, Col, Table } from 'reactstrap';
 
 import apiClient from '../../api';
 import { AdminContext } from '../../AdminContextProvider';
@@ -133,30 +133,32 @@ export default function ContactsContainer() {
 									<td>
 										{!contact.updated_at ? '' : <Moment format='D. MMMM YYYY'>{contact.updated_at}</Moment>}
 									</td>
-									<td className='d-flex justify-content-center p-2'>
-										<Button
-											outline
-											title='Edit contact'
-											className='me-2'
-											type='button'
-											color='info'
-											onClick={() => {
-												toggleEditContactModal(); 
-												setSelectedContact(contact);
-											}}
-										>
-											<i className='bi bi-pencil' />
-										</Button>
-										<Button
-											outline
-											title='Delete contact'
-											className='ms-2'
-											type='button'
-											color='danger'
-											onClick={() => deleteContact(contact.id)}
-										>
-											<i className='bi bi-trash' />
-										</Button>
+									<td className='text-center'>
+										<ButtonGroup>
+											<Button
+												outline
+												title='Edit contact'
+												className='me-2'
+												type='button'
+												color='info'
+												onClick={() => {
+													toggleEditContactModal();
+													setSelectedContact(contact);
+												}}
+											>
+												<i className='bi bi-pencil' />
+											</Button>
+											<Button
+												outline
+												title='Delete contact'
+												className='ms-2'
+												type='button'
+												color='danger'
+												onClick={() => deleteContact(contact.id)}
+											>
+												<i className='bi bi-trash' />
+											</Button>
+										</ButtonGroup>
 									</td>
 								</tr>
 							))

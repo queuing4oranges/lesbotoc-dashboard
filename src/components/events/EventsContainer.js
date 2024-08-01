@@ -9,6 +9,7 @@ import { Container, Col, Row, Card, CardBody, CardHeader, Button } from 'reactst
 // import AdminNavbar from "../../includes/AdminNavbar";
 // import ReportBug from "../../includes/ReportBug";
 import EditEvent from "./EditEvent";
+import { DeleteEvent } from './utils/deleteEvent';
 
 import { 
 	NameField, EventTypeField, LocationNameField,
@@ -80,31 +81,6 @@ export default function EventsContainer() {
 		setSuccess(true);
 	}
 	
-	// Delete an event
-	const deleteEvent = async (id) => {
-		try {
-			const confirmDelete = await swal({
-				title: 'Sure?',
-				text: 'Do you REALLY want to delete this exquisite event?',
-				icon: 'warning',
-				buttons: true,
-				dangerMode: true,
-			});
-			
-			if (confirmDelete) {
-				const response = await apiClient.delete(`/events/delete.php/${id}`)
-				if (response.status === 200) {
-					toast('🧯Deleted - gone forever');
-				} else {
-					throw new Error(`Something went wrong. Response status: ${response.status}`);
-				}
-			}
-		} catch {
-			toast.error('Seems like you need to keep that event forever');
-		}
-		setSuccess(true);
-	};
-
 	return (
 		<Container fluid className='w-100 p-0 m-0 events-container'>
 			{/* <AdminNavbar className="w-100" /> */}
@@ -115,10 +91,7 @@ export default function EventsContainer() {
 
 			<Row className='mx-5 mb-3'> 
 				<Col md='3' className='overflow-y-auto' style={{ height: '100vh'}}>
-					<EventsList 
-						deleteEvent={deleteEvent}
-						toggle={toggleEditEventModal}
-					/>
+					<EventsList toggle={toggleEditEventModal} />
 				</Col>
 				
 				<Col md='9'>

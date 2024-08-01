@@ -3,10 +3,11 @@ import { AdminContext } from '../../AdminContextProvider';
 import { Card, CardBody, CardHeader, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import { deleteEvent } from './utils/deleteEvent';
 
-export default function EventsList({ deleteEvent, ...props }) {
+export default function EventsList({ toggle }) {
 	
-	const { events, setSelectedEvent } = useContext(AdminContext);
+	const { events, setSelectedEvent, setSuccess } = useContext(AdminContext);
 
 	return (
 		<Card className='h-100'>
@@ -39,7 +40,7 @@ export default function EventsList({ deleteEvent, ...props }) {
 								color='info'
 								className='me-2 flex-grow-1'
 								onClick={() => {
-									props.toggle();
+									toggle();
 									setSelectedEvent(event);
 								}}
 							>
@@ -51,7 +52,7 @@ export default function EventsList({ deleteEvent, ...props }) {
 								type='button'
 								color='danger'
 								className='ms-2 flew-grow-1'
-								onClick={() => deleteEvent(event.id)}
+								onClick={() => deleteEvent(event.id, setSuccess)}
 							>
 								<i className='bi bi-trash' />
 							</Button>

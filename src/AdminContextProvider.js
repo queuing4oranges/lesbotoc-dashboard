@@ -8,6 +8,7 @@ const AdminContextProvider = ({ children }) => {
 	const [selectedEvent, setSelectedEvent] = useState(false);
 	const [success, setSuccess] = useState(false);
 	const [selectedContact, setSelectedContact] = useState(false);
+	const [editEventModal, setEditEventModal] = useState(false);
 	
 	return (
 		<AdminContext.Provider 
@@ -21,7 +22,9 @@ const AdminContextProvider = ({ children }) => {
 				selectedContact,
 				setSelectedContact,
 				selectedEvent,
-				setSelectedEvent
+				setSelectedEvent,
+				editEventModal,
+				setEditEventModal
 			}}
 		>
 			{children}

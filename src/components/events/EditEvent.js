@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
+import { AdminContext } from '../../AdminContextProvider';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { editEvent } from './utils/editEvent';
 
 import {
 	NameField, EventTypeField, LocationNameField,
@@ -12,49 +13,30 @@ import {
 
 import { Modal, ModalBody, ModalHeader, Row, Col, Button } from 'reactstrap';
 
-import { AdminContext } from '../../AdminContextProvider';
-import apiClient from '../../api';
-
-
-export default function EditEvent({ event, ...props }) {
+export default function EditEvent({ event, toggle, ...props }) {
 	const { setSuccess } = useContext(AdminContext);
 	const { id } = event;
 
-	const { register, handleSubmit, formState: { errors } } = useForm({
+	const { register, handleSubmit, reset, formState: { errors } } = useForm({
 		defaultValues: { ...event, id }
 	});
 
 	// Edit an event
-	const editEvent = async (values) => {
-		// Convert value to tinyint for DB
-		if(values){
-			values.signup === false ? values.signup = 0 : values.signup = 1
-		}
-		try {
-			const response = await apiClient.put(`events/update.php/${id}`, {...values, id});
-		
-			if (response.status === 200) {
-				props.toggle();
-				toast('⭐ Well done! You edited an event!');
-			} else {
-				throw new Error(`Something went wrong. Response status: ${response.status}`);
-			}
-		} catch {
-			toast.error('Could not edit the event.');
-		}
-		setSuccess(true);
+	const onSubmit = async (values) => {
+		await editEvent(id, values, toggle, setSuccess);
+		reset();
 	};
 	
 	return (
 		<Modal
 			isOpen={props.editEventModal}
-			toggle={props.toggle}
+			toggle={toggle}
 			size='xl'
 		>
 			<ModalHeader>Edit an event</ModalHeader>
 			<ModalBody className='event-modal-body'>
 				<form
-					onSubmit={handleSubmit(editEvent)}
+					onSubmit={handleSubmit(onSubmit)}
 					encType='multipart/form-data'
 					id='edit-event-form'
 				>
@@ -88,7 +70,7 @@ export default function EditEvent({ event, ...props }) {
 							<Button
 								type='button'
 								color='warning'
-								onClick={props.toggle}
+								onClick={toggle}
 							>
 								Discard Changes
 							</Button>

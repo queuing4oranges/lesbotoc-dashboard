@@ -22,15 +22,15 @@ import apiClient from '../../api';
 import EventsList from './EventsList';
 
 export default function EventsContainer() {
-	const [editEventModal, setEditEventModal] = useState(false);
 	
 	const {
 		setEvents,
 		success, setSuccess,
-		selectedEvent, setSelectedEvent
+		selectedEvent, setSelectedEvent,
+		editEventModal, setEditEventModal
 	} = useContext(AdminContext);
 	
-	const toggleEditEventModal = () => setEditEventModal(!editEventModal);
+	const toggle = () => setEditEventModal(!editEventModal);
 	const { register, handleSubmit, reset, formState: { errors } } = useForm();
 		
 	useEffect(() => {
@@ -91,7 +91,7 @@ export default function EventsContainer() {
 
 			<Row className='mx-5 mb-3'> 
 				<Col md='3' className='overflow-y-auto' style={{ height: '100vh'}}>
-					<EventsList toggle={toggleEditEventModal} />
+					<EventsList toggle={toggle} />
 				</Col>
 				
 				<Col md='9'>
@@ -153,12 +153,12 @@ export default function EventsContainer() {
 			</Row>
 			
 			{editEventModal &&
-				<EditEvent 
-					toggle={toggleEditEventModal}
+				<EditEvent
+					toggle={toggle}
 					editEventModal={editEventModal}
 					setEditEventModal={setEditEventModal}
-					event={selectedEvent} 
-					setSelectedEvent={setSelectedEvent} 
+					event={selectedEvent}
+					setSelectedEvent={setSelectedEvent}
 				/>  
 			}
 		</Container>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AdminContext } from '../../AdminContextProvider';
-import { Card, CardBody, CardHeader, Button } from 'reactstrap';
+import { Card, CardBody, CardHeader, Button, ButtonGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { deleteEvent } from './utils/deleteEvent';
@@ -33,29 +33,31 @@ export default function EventsList({ toggle }) {
 							}
 						</div>
 						<div className='d-flex align-items-start'>
-							<Button
-								outline
-								title='Edit event'
-								type='button'
-								color='info'
-								className='me-2 flex-grow-1'
-								onClick={() => {
-									toggle();
-									setSelectedEvent(event);
-								}}
-							>
-								<i className='bi bi-pencil' />
-							</Button>
-							<Button
-								outline
-								title='Delete event'
-								type='button'
-								color='danger'
-								className='ms-2 flew-grow-1'
-								onClick={() => deleteEvent(event.id, setSuccess)}
-							>
-								<i className='bi bi-trash' />
-							</Button>
+							<ButtonGroup>
+								<Button
+									outline
+									title='Edit event'
+									type='button'
+									color='info'
+									className='me-2 flex-grow-1'
+									onClick={() => {
+										toggle();
+										setSelectedEvent(event);
+									}}
+								>
+									<i className='bi bi-pencil' />
+								</Button>
+								<Button
+									outline
+									title='Delete event'
+									type='button'
+									color='danger'
+									className='ms-2 flew-grow-1'
+									onClick={() => deleteEvent(event.id, setSuccess)}
+								>
+									<i className='bi bi-trash' />
+								</Button>
+							</ButtonGroup>
 						</div>
 					</div>
 				))}

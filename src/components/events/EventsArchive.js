@@ -12,7 +12,7 @@ import apiClient from '../../api';
 export default function EventsArchive() {
 	const {
 		events, setEvents,
-		setSuccess,
+		setSuccess, success,
 		selectedEvent, setSelectedEvent,
 		editEventModal, setEditEventModal
 	} = useContext(AdminContext);
@@ -22,7 +22,7 @@ export default function EventsArchive() {
 	// Make sure to get events if user doesnt uses URL instead of navigation
 	useEffect(() => {
 		fetchEventsIfNotLoaded();
-	}, [])
+	}, [success])
 
 	const fetchEventsIfNotLoaded = async () =>{
 		try {
@@ -139,6 +139,7 @@ export default function EventsArchive() {
 			
 			{editEventModal &&
 				<EditEvent
+					success={success}
 					setSuccess={setSuccess}
 					toggle={toggle}
 					editEventModal={editEventModal}

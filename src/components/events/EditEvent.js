@@ -25,6 +25,7 @@ export default function EditEvent({ event, toggle, ...props }) {
 	const onSubmit = async (values) => {
 		await editEvent(id, values, toggle, setSuccess);
 		reset();
+		setSuccess(true);
 	};
 	
 	return (

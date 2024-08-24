@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { AdminContext } from '../../AdminContextProvider';
+import React, { useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form'; 
 import { toast } from 'react-toastify';
-import swal from 'sweetalert';
+
 import { Container, Col, Row, Card, CardBody, CardHeader, Button } from 'reactstrap';
 
-// TODO components
-// import AdminNavbar from "../../includes/AdminNavbar";
-// import ReportBug from "../../includes/ReportBug";
-import EditEvent from "./EditEvent";
-import { DeleteEvent } from './utils/deleteEvent';
+import { AdminContext } from '../../AdminContextProvider';
+import AdminNavbar from '../../includes/AdminNavbar';
+import EditEvent from './EditEvent';
+import apiClient from '../../api';
+import EventsList from './EventsList';
 
 import { 
 	NameField, EventTypeField, LocationNameField,
@@ -18,8 +17,6 @@ import {
 	DateField, TimeField, PriceField, CapacityField,
 	EventImageField, SignupField 
 } from './EventFormFields';
-import apiClient from '../../api';
-import EventsList from './EventsList';
 
 export default function EventsContainer() {
 	
@@ -32,12 +29,10 @@ export default function EventsContainer() {
 	
 	const toggle = () => setEditEventModal(!editEventModal);
 	const { register, handleSubmit, reset, formState: { errors } } = useForm();
-		
-	useEffect(() => {
-	  getEvents()
-	}, [])
 	
 	useEffect(() => {
+		getEvents();
+
 		if(success) {
 			getEvents();
 			setSuccess(false);			
@@ -83,8 +78,7 @@ export default function EventsContainer() {
 	
 	return (
 		<Container fluid className='w-100 p-0 m-0 events-container'>
-			{/* <AdminNavbar className="w-100" /> */}
-			{/* <ReportBug /> */}
+			<AdminNavbar className='w-100' />
 			<Row className='px-2'>
 				<h3 className='mx-5 my-3'>Events</h3>
 			</Row>

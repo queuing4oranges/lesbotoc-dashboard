@@ -6,8 +6,9 @@ import { Container, Col, Row, Card, CardBody, Table, Button, ButtonGroup } from 
 
 import { AdminContext } from '../../AdminContextProvider';
 import { deleteEvent } from './utils/deleteEvent';
-import EditEvent from './EditEvent';
 import apiClient from '../../api';
+import EditEvent from './EditEvent';
+import AdminNavbar from '../../includes/AdminNavbar';
 
 export default function EventsArchive() {
 	const {
@@ -38,8 +39,7 @@ export default function EventsArchive() {
 
 	return (
 		<Container fluid className='w-100 p-0 m-0'>
-			{/* <AdminNavbar className='w-100' /> */}
-			{/* <ReportBug /> */}
+			<AdminNavbar className='w-100' />
 			<Row className='px-2'>
 				<h3 className='px-5 my-3'>Events Archive</h3>
 			</Row>

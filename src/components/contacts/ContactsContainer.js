@@ -12,7 +12,7 @@ import AddModal from './AddModal';
 import EditModal from './EditModal';
 import Searchbar from './Searchbar';
 import TableHead from './TableHead';
-// import AdminNavbar from '../../includes/AdminNavbar';
+import AdminNavbar from '../../includes/AdminNavbar';
 // import ReportBug from '../../includes/ReportBug';
 
 export default function ContactsContainer() {
@@ -81,7 +81,7 @@ export default function ContactsContainer() {
 
 	return (
 		<Container fluid className='w-100 p-0 m-0'>
-		{/* <AdminNavbar className='w-100' /> */}
+		<AdminNavbar className='w-100' />
 		{/* <ReportBug/> */}
 			<Row className='px-2'>
 				<h3 className='px-5 my-3'>Contacts</h3>

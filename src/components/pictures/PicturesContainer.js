@@ -1,18 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
-import swal from "sweetalert";
-import Moment from "react-moment";
-
-import { Container, Row, Col, Card, CardImg, CardBody, CardText, Button, CardTitle } from "reactstrap";
-
+import React, { useState, useEffect, useContext } from 'react';
+import swal from 'sweetalert';
+import Moment from 'react-moment';
 import { toast } from 'react-toastify';
 
-import AdminNavbar from "../../includes/AdminNavbar";
-import { AdminContext } from "../../AdminContextProvider";
+import { Container, Row, Col, Card, CardText, Button, CardTitle } from 'reactstrap';
+
+import AdminNavbar from '../../includes/AdminNavbar';
+import PicturesUploadModal from './PicturesUploadModal';
+import { AdminContext } from '../../AdminContextProvider';
 import { apiClient, baseURL } from '../../api';
 
 import './images.scss';
-import PicturesUploadModal from "./PicturesUploadModal";
-
 
 export default function PicturesContainer() {
 	const [images, setImages] = useState([]);
@@ -77,10 +75,10 @@ export default function PicturesContainer() {
 					>
 						Add Image
 					</Button>
-					<p className="text-success me-3 mb-0">For best performace, choose image in landscape, max. 100kb in jpeg, jpg, png, gif format</p>
-					<i className="bi bi-arrow-right me-3" />
+					<p className='text-success me-3 mb-0'>For best performace, choose image in landscape, max. 100kb in jpeg, jpg, png, gif format</p>
+					<i className='bi bi-arrow-right me-3' />
 					<Button outline color='success'>
-						<a className="text-danger" href="https://imagecompressor.com/" target="_blank" rel="noreferrer">Online Image Compressor</a>
+						<a className='text-danger' href='https://imagecompressor.com/' target='_blank' rel='noreferrer'>Online Image Compressor</a>
 					</Button>
 				</Col>
 			</Row>
@@ -96,8 +94,8 @@ export default function PicturesContainer() {
 							<CardTitle className='p-2' tag='h4'>{img?.title}</CardTitle>
 							<CardText className='p-2 d-flex justify-content-between'>
 								<span>
-									<p className="text-muted m-0">File name: {img?.filename}</p>
-									<p className="text-muted m-0">Uploaded at: {<Moment format="D. MM YYYY">{img.created_at}</Moment>}</p>
+									<p className='text-muted m-0'>File name: {img?.filename}</p>
+									<p className='text-muted m-0'>Uploaded at: {<Moment format='D. MM YYYY'>{img.created_at}</Moment>}</p>
 								</span>
 								<span>
 									<Button
@@ -105,7 +103,7 @@ export default function PicturesContainer() {
 										id={img.id}
 										onClick={() => deleteImage(img.id)}
 									>
-										<i className="bi bi-trash" />
+										<i className='bi bi-trash' />
 									</Button>
 								</span>
 							</CardText>

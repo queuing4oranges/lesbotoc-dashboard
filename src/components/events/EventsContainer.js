@@ -18,6 +18,8 @@ import {
 	EventImageField, SignupField 
 } from './EventFormFields';
 
+import './events.scss';
+
 export default function EventsContainer() {
 	
 	const {

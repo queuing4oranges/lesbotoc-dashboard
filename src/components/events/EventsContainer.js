@@ -7,7 +7,7 @@ import { Container, Col, Row, Card, CardBody, CardHeader, Button } from 'reactst
 import { AdminContext } from '../../AdminContextProvider';
 import AdminNavbar from '../../includes/AdminNavbar';
 import EditEvent from './EditEvent';
-import apiClient from '../../api';
+import { apiClient } from '../../api';
 import EventsList from './EventsList';
 
 import { 

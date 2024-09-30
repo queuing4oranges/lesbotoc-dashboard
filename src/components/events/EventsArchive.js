@@ -6,7 +6,7 @@ import { Container, Col, Row, Card, CardBody, Table, Button, ButtonGroup } from 
 
 import { AdminContext } from '../../AdminContextProvider';
 import { deleteEvent } from './utils/deleteEvent';
-import apiClient from '../../api';
+import { apiClient } from '../../api';
 import EditEvent from './EditEvent';
 import AdminNavbar from '../../includes/AdminNavbar';
 

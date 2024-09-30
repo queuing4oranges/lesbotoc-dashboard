@@ -6,14 +6,13 @@ import { CSVLink } from 'react-csv';
 
 import { Container, Row, Button, ButtonGroup, Col, Table } from 'reactstrap';
 
-import apiClient from '../../api';
+import { apiClient } from '../../api';
 import { AdminContext } from '../../AdminContextProvider';
 import AddModal from './AddModal';
 import EditModal from './EditModal';
 import Searchbar from './Searchbar';
 import TableHead from './TableHead';
 import AdminNavbar from '../../includes/AdminNavbar';
-// import ReportBug from '../../includes/ReportBug';
 
 export default function ContactsContainer() {
 	const [addContactModal, setAddContactModal] = useState(false);
@@ -82,7 +81,6 @@ export default function ContactsContainer() {
 	return (
 		<Container fluid className='w-100 p-0 m-0'>
 		<AdminNavbar className='w-100' />
-		{/* <ReportBug/> */}
 			<Row className='px-2'>
 				<h3 className='px-5 my-3'>Contacts</h3>
 			</Row>

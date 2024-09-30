@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 
 import { AdminContext } from '../../AdminContextProvider';
-import apiClient from '../../api';
+import { apiClient } from '../../api';
 import { wherefromPlaces, ageGroups } from '../../Datalists';
 
 export default function EditModal({ contact, ...props }) {

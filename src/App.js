@@ -9,9 +9,9 @@ import EventsContainer from './components/events/EventsContainer';
 import EventsArchive from '../src/components/events/EventsArchive';
 
 import ContactsContainer from './components/contacts/ContactsContainer';
-import AdminLogin from '../src/components/admin/AdminLogin';
-import ImageUpload from '../src/components/admin/pictures/ImageUpload';
-import More from '../src/components/admin/more/More';
+import AdminLogin from './components/login/AdminLogin';
+import PicturesContainer from '../src/components/pictures/PicturesContainer';
+import More from './components/more/More';
 import AdminContextProvider from './AdminContextProvider';
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
 						<Route path='/contacts' element={<ContactsContainer />} />
 						<Route path='/events' element={<EventsContainer />} />
 						<Route path='/events/archive' element={<EventsArchive />} />
-						<Route path='/pictures' element={<ImageUpload />} />
+						<Route path='/pictures' element={<PicturesContainer />} />
 						<Route path='/more' element={<More />} />
 						<Route path='/newcontacts' element={<ContactsContainer />} />
 					</Routes>

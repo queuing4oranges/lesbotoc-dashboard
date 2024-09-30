@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import apiClient from '../../../api';
+import { apiClient } from '../../../api';
 
 // Edit an event
 export async function editEvent(id, values, toggle, setSuccess) {

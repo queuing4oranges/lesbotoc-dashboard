@@ -1,6 +1,6 @@
 import swal from 'sweetalert';
 import { toast } from 'react-toastify';
-import apiClient from '../../../api';
+import { apiClient } from '../../../api';
 
 // Delete an event
 export async function deleteEvent(id, setSuccess) {

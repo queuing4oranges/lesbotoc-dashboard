@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import swal from 'sweetalert';
 import Moment from 'react-moment';
 import { CSVLink } from 'react-csv';
@@ -10,9 +9,6 @@ import { Container, Col, Row, Button, Table } from 'reactstrap';
 import AdminNavbar from '../../includes/AdminNavbar';
 import { apiClient } from '../../api';
 import { AdminContext } from '../../AdminContextProvider';
-
-import { BsCloudDownload, BsTrash } from 'react-icons/bs';
-import { CiLink } from 'react-icons/ci';
 
 import './more.scss';
 

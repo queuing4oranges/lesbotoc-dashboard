@@ -1,0 +1,29 @@
+.admin-login-form {
+	background-color: rgb(245, 123, 208);
+	z-index: 2;
+}
+
+.admin-login-container {
+	&::before {
+		content: "";
+		background-image: url(./admin-login-background.jpg);
+		background-size: cover;
+		opacity: 0.2;
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		pointer-events: none; // Makes input still clickable
+	}
+}
+
+.login-button {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 3px solid pink;
+		&:hover {
+			color: pink;
+		}
+}
